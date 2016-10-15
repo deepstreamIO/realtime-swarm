@@ -4,7 +4,7 @@ const Renderer = require( './renderer/canvas-2d-renderer' );
 
 const width = 800;
 const height = 600;
-const leaders = new LeaderBoids();
+const leaders = new LeaderBoids( width, height );
 const swarm = new Swarm( width, height, leaders );
 const renderer = new Renderer( width, height );
 
