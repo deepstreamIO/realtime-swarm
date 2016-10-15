@@ -3,21 +3,19 @@ module.exports = class Agent{
 		this._world = null;
 		this.x = x;
 		this.y = y;
-		this.speed = 1; //Pixels per tick
-		this._randomOffset = 10;
+		this.speed = 2; //Pixels per tick
+		this._randomOffset = 1;
 	}
 
 	setWorld( world ) {
 		this._world = world;
 	}
 
-	update() {
-		// var cA = this._world.getClosestAgent( this );
-		//var alpha = Math.PI / 2 + Math.atan2( cA.y - this.y, cA.x - this.x );
-		var alpha = this._world.getAngleOfSwarm( this );
-		this.x = this.x + Math.sin( alpha ) * this.speed;
-		this.y = this.y + Math.cos( alpha ) * this.speed;
-		//this.x += (this._randomOffset * -1 ) + ( Math.random() * ( this._randomOffset * 2 ) );
-		//this.y += (this._randomOffset * -1 ) + ( Math.random() * ( this._randomOffset * 2 ) );
+	update( avgPos ) {
+		var avgPos = this._world.getAvgPosOfClosestAgents( this, 3 );
+		this.x = avgPos.x > this.x ? this.x + this.speed : this.x - this.speed;
+		this.y = avgPos.y > this.y ? this.y + this.speed : this.y - this.speed;
+		this.x += ( this._randomOffset * -1 ) + ( this._randomOffset * Math.random() * 2 );
+		this.y += ( this._randomOffset * -1 ) + ( this._randomOffset * Math.random() * 2 );
 	}
 }

@@ -10,9 +10,25 @@ module.exports = class Canvas2DRenderer{
 		this.ctx.fillStyle = '#fff';
 	}
 
-	render() {
+	clear() {
 		this.ctx.clearRect( 0, 0, this._width, this._height );
+	}
+
+	render() {
+		this.clear();
 		this._world.agents.forEach( this._renderAgent.bind( this ) );
+	}
+
+	renderBoids( boids ) {
+		this.clear();
+		for( var i = 0; i < boids.length; i++ ) {
+			if( boids[ i ][ 6 ] === true ) {
+				this.ctx.fillStyle = '#F00';
+			} else {
+				this.ctx.fillStyle = '#FFF';
+			}
+			this.ctx.fillRect( boids[ i ][ 0 ] - 1, boids[ i ][ 1 ] - 1, 2, 2 );
+		}
 	}
 
 	_renderAgent( agent ) {
