@@ -2,4 +2,80 @@
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	color: #fff;
+	font-family: Muli, sans-serif;
+	font-weight: bold;
+}
+
+body{
+	background: #0FBBEC;
+}
+
+.swarm{
+	position: fixed;
+	width: 1000px;
+	height: 700px;
+	left: 50%;
+	margin-left: -500px;
+	z-index: -1;
+
+	display: none;
+}
+
+.slide{
+	width: 1400px;
+}
+
+h2{
+	font-size: 100px;
+	text-align: center;
+}
+
+h3{
+	font-size: 30px;
+}
+
+.title img,
+.title .details{
+	float: left;
+}
+
+.title img{
+	width: 35%;
+	margin-right: 5%;
+}
+
+.title .details{
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -59px;
+}
+
+h2.left{
+	text-align: left;
+}
+
+.full-size{
+	height: 100%;
+}
+
+.two-col{
+	overflow: hidden;
+}
+
+.two-col > *{
+	float: left;
+	width: 50%;
+}
+
+.center{
+	text-align: center;
+}
+ul.list li{
+    font-size: 40px;
+    list-style-type: disc;
+    margin-left: 40px;
 }
