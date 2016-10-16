@@ -1,22 +1,5 @@
 const deepstream = require( 'deepstream.io-client-js' );
 const ds = deepstream( 'localhost:6020' ).login();
-const colors = [
-	'#393939',
-	'#515151',
-	'#747369',
-	'#a09f93',
-	'#d3d0c8',
-	'#e8e6df',
-	'#f2f0ec',
-	'#f2777a',
-	'#f99157',
-	'#ffcc66',
-	'#99cc99',
-	'#66cccc',
-	'#6699cc',
-	'#cc99cc',
-	'#d27b53'
-];
 
 module.exports = class LeaderBoids{
 	constructor( width, height ) {
@@ -29,7 +12,29 @@ module.exports = class LeaderBoids{
 	}
 
 	update() {
+		var user,
+			data,
+			boid;
 
+		for( user in this._users ) {
+			data = this._users[ user ].record.get();
+			boid = this._users[ user ].boid;
+
+			if( data.up ) {
+				boid[ 1 ]--;
+			}
+			if( data.down ) {
+				boid[ 1 ]++;
+			}
+			if( data.left ) {
+				boid[ 0 ]--;
+			}
+			if( data.right ) {
+				boid[ 0 ]++;
+			}
+
+			boid[ 5 ] = data.highlight;
+		}
 	}
 
 	_onUser( user, isSubscribed, response ) {
@@ -43,16 +48,18 @@ module.exports = class LeaderBoids{
 					Math.random() * this._width,
 					Math.random() * this._height,
 					50, //attraction radius
-					0.1
+					0.1,
+					color,
+					false
 				]
 			};
 
 			record.set( 'color', color );
+			this.boids.push( this._users[ user ].boid );
 		}
 	}
 
 	_getColor() {
-		var index = Math.floor( Math.random() * colors );
-		return colors.splice( index, 1 )[ 0 ];
+		return 'hsl(' + Math.floor( Math.random() * 360 ) + ', 100%, 50%)';
 	}
 }

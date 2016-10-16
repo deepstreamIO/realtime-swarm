@@ -7,6 +7,8 @@ module.exports = class Canvas2DRenderer{
 		this.element.height = height;
 		this.ctx = this.element.getContext( '2d' );
 		this.ctx.fillStyle = '#fff';
+		this.ctx.strokeStyle = '#fff';
+		this.ctx.lineWidth = 3;
 	}
 
 	clear() {
@@ -21,9 +23,12 @@ module.exports = class Canvas2DRenderer{
 	}
 
 	renderLeaderBoids( boids ) {
-		this.ctx.fillStyle = '#F00';
 		for( var i = 0; i < boids.length; i++ ) {
-			this.ctx.fillRect( boids[ i ][ 0 ] - 1, boids[ i ][ 1 ] - 1, 2, 2 );
+			this.ctx.fillStyle = boids[ i ][ 4 ];
+			this.ctx.fillRect( boids[ i ][ 0 ] - 3, boids[ i ][ 1 ] - 3, 6, 6 );
+			if( boids[ i ][ 5 ] ) {
+				this.ctx.strokeRect( boids[ i ][ 0 ] - 3, boids[ i ][ 1 ] - 3, 6, 6 );
+			}
 		}
 	}
 }
