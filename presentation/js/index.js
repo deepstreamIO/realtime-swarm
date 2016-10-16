@@ -1,23 +1,23 @@
-const Swarm = require( './swarm' );
-const LeaderBoids = require( './leader-boids' );
-const Renderer = require( './renderer/canvas-2d-renderer' );
+const World = require( './world' );
+const Renderer = require( './canvas-2d-renderer' );
 
-const width = 800;
-const height = 600;
-const leaders = new LeaderBoids( width, height );
-const swarm = new Swarm( width, height, leaders );
-const renderer = new Renderer( width, height );
+const WIDTH = 200;
+const HEIGHT = 150;
+const world = new World({
+    width: WIDTH,
+    height: HEIGHT,
+    maxAnts: 150,
+    antHill: { x: 60, y: 60 }
+});
+const renderer = new Renderer( WIDTH, HEIGHT, 4 );
 
 function tick() {
-	leaders.update();
-	swarm.update();
-	renderer.clear();
-	renderer.renderBoids( swarm.boids );
-	renderer.renderLeaderBoids( leaders.boids );
-	requestAnimationFrame( tick );
+    world.update();
+    renderer.render( world.data );
+    requestAnimationFrame( tick );
 }
 
 window.onload = function() {
-	document.body.appendChild( renderer.element );
-	tick();
+    document.body.appendChild( renderer.element );
+    tick();
 }
