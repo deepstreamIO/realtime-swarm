@@ -9,6 +9,7 @@ module.exports = class Canvas2DRenderer{
 		this.ctx.fillStyle = '#fff';
 		this.ctx.strokeStyle = '#fff';
 		this.ctx.lineWidth = 3;
+		//this.ctx.scale( 1.5, 1.5 );
 	}
 
 	clear() {
@@ -18,7 +19,7 @@ module.exports = class Canvas2DRenderer{
 	renderBoids( boids ) {
 		this.ctx.fillStyle = '#FFF';
 		for( var i = 0; i < boids.length; i++ ) {
-			this.ctx.fillRect( boids[ i ][ 0 ] - 1, boids[ i ][ 1 ] - 1, 2, 2 );
+			this.ctx.fillRect( boids[ i ][ 0 ] - 2, boids[ i ][ 1 ] - 2, 4, 4 );
 		}
 	}
 

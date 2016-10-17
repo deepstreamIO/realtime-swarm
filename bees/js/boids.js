@@ -31,8 +31,8 @@ function Boids(opts, callback) {
   var boids = this.boids = []
   for (var i = 0, l = opts.boids === undefined ? 50 : opts.boids; i < l; i += 1) {
     boids[i] = [
-        (opts.width/2 - 25) + ( Math.random()*50),
-        (opts.height/2 - 25) + ( Math.random()*50),
+        (opts.x - 25) + ( Math.random()*50),
+        (opts.y - 25) + ( Math.random()*50),
         0,0,
         0,0                             // acceleration
     ]

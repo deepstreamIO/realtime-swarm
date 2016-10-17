@@ -13,15 +13,18 @@ body{
 
 .swarm{
 	position: fixed;
-	width: 1000px;
-	height: 700px;
+	width: 1400px;
+	height: 100%;
 	left: 50%;
-	margin-left: -500px;
+	margin-left: -700px;
 	z-index: -1;
 
 	display: none;
 }
 
+.swarm-b{
+	display: block;
+}
 .slide{
 	width: 1400px;
 }
@@ -74,8 +77,29 @@ h2.left{
 .center{
 	text-align: center;
 }
+
 ul.list li{
     font-size: 40px;
     list-style-type: disc;
     margin-left: 40px;
+}
+
+.num-list *{
+	font-size: 50px;
+	text-align: left;
+}
+
+.num-list .wrapper{
+	margin: 0 auto;
+	width: 600px;
+}
+
+.num-list span{
+	display: inline-block;
+	width: 120px;
+}
+
+.foot-note a{
+	text-decoration: none;
+	font-weight: normal;
 }
