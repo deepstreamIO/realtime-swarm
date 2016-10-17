@@ -38,6 +38,12 @@ h3{
 	font-size: 30px;
 }
 
+img.circle{
+    border-radius: 10000px;
+    border: 5px solid #fff;
+    width: 80%;
+}
+
 .title img,
 .title .details{
 	float: left;
@@ -102,4 +108,20 @@ ul.list li{
 .foot-note a{
 	text-decoration: none;
 	font-weight: normal;
+}
+
+.boid-mechanic{
+	overflow: hidden;
+}
+
+.boid-mechanic > div{
+	float: left;
+	width: 33.3%;
+	text-align: center;
+}
+
+.boid-mechanic label{
+	display: block;
+	text-align: center;
+	font-size: 40px;
 }
