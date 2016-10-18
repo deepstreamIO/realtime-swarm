@@ -3,9 +3,17 @@ const deepstream = require( 'deepstream.io-client-js' );
 
 $(function(){
 	function resize() {
+		var width = $(window).width();
+		$( '.mask' ).width( width );
+		$( '.inner' ).width( width * 2 );
 		var dpadSize = $( '.d-pad' ).width();
 		$( '.d-pad' ).height( dpadSize );
 		$( '.d-pad i' ).css( 'font-size', (dpadSize/3) + 'px' );
+		$( '.canvas-container' ).width( width * 0.8 ).height( width * 0.8 );
+	}
+
+	window.switchCtrl = function() {
+		$( '.inner' ).css( 'left', -1 * $(window).width() );
 	}
 
 	resize();
@@ -14,7 +22,7 @@ $(function(){
 	ds = deepstream( 'localhost:6020');
 
 	ds.on( 'connectionStateChanged', connectionState => {
-		$( '.connection-state' ).text( connectionState );
+		$( '.connection-state' ).text( 'connection-state: ' + connectionState.toLowerCase() );
 	});
 
 	function bindKey( rec, selector, path ) {

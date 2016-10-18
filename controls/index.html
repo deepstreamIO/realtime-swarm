@@ -8,15 +8,32 @@
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 </head>
 <body>
-	<div class="d-pad">
-		<div class="up"><i class="fa fa-arrow-circle-o-up"></i></div>
-		<div class="right"><i class="fa fa-arrow-circle-o-right"></i></div>
-		<div class="down"><i class="fa fa-arrow-circle-o-down"></i></div>
-		<div class="left"><i class="fa fa-arrow-circle-o-left"></i></div>
+	<div class="mask">
+		<div class="inner">
+			<div class="swarm-control ant-swarm-controls">
+				<ul class="select-type">
+					<li><i class="fa fa-cube"></i> obstacle</li>
+					<li><i class="fa fa-leaf"></i> food</li>
+					<li><i class="fa fa-eraser"></i> erase</li>
+				</ul>
+
+				<div class="canvas-container">
+
+				</div>
+			</div>
+			<div class="swarm-control bee-swarm-controls">
+				<div class="d-pad">
+					<div class="up"><i class="fa fa-arrow-circle-o-up"></i></div>
+					<div class="right"><i class="fa fa-arrow-circle-o-right"></i></div>
+					<div class="down"><i class="fa fa-arrow-circle-o-down"></i></div>
+					<div class="left"><i class="fa fa-arrow-circle-o-left"></i></div>
+				</div>
+				<div class="highlight-position">
+				Highlight Position
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="highlight-position">
-	Highlight Position
-	</div>
-	<div class="connection-state">INITIAL</div>
+	<div class="connection-state">connection-state: initial</div>
 </body>
 </html>
