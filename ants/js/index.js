@@ -13,7 +13,7 @@ const renderer = new Renderer( WIDTH, HEIGHT, 4 );
 
 function tick() {
     world.update();
-    renderer.render( world.data );
+    renderer.render( world.data, world.dataLayer );
     requestAnimationFrame( tick );
 }
 

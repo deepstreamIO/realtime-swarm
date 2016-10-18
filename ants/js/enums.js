@@ -3,5 +3,9 @@ module.exports = {
 	ANT: 1,
 	FOOD: 2,
 	OBSTACLE: 3,
-	ANT_HILL: 4
+	ANT_HILL: 4,
+	ANT_WITH_FOOD: 5,
+	MAX_FOOD: 50,
+	PHEROMONE: 6,
+	MAX_PHEROMONE: 150
 }
