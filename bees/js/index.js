@@ -4,13 +4,13 @@ const Renderer = require( './renderer/canvas-2d-renderer' );
 
 
 module.exports = class BeeSwarm{
-	constructor( element, x, y ) {
+	constructor( ds, element, x, y ) {
 		this.element = element;
 		this.isRunning = false;
 		this.animationFrame = null;
 		var width = this.element.offsetWidth;
 		var height = this.element.offsetHeight;
-		this.leaders = new LeaderBoids( width, height );
+		this.leaders = new LeaderBoids( ds, width, height );
 		this.swarm = new Swarm( x, y, this.leaders );
 		this.renderer = new Renderer( width, height );
 		this.element.appendChild( this.renderer.element );

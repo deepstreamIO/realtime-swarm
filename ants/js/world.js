@@ -8,10 +8,10 @@ module.exports = class World{
 		this.ants = [];
 		this.data = null;
 		this.dataLayer = this._generateData( true );
-
-		this._addBlock( { type: E.OBSTACLE, strength: 1 }, 20, 20, 120, 22 );
-		this._addBlock( { type: E.OBSTACLE, strength: 1 }, 20, 20, 22, 120 );
-		this._addBlock( { type: E.FOOD, strength: E.MAX_FOOD }, 80, 80, 85, 85 );
+		this.settings.ds.event.subscribe( 'ant-draw', this._onDraw.bind( this ) );
+	//	this._addBlock( { type: E.OBSTACLE, strength: 1 }, 20, 20, 120, 22 );
+	//	this._addBlock( { type: E.OBSTACLE, strength: 1 }, 20, 20, 22, 120 );
+	//	this._addBlock( { type: E.FOOD, strength: E.MAX_FOOD }, 80, 80, 85, 85 );
 	}
 
 	update() {
@@ -25,6 +25,26 @@ module.exports = class World{
 		for( var i = 0; i < this.ants.length; i++ ) {
 			this.ants[ i ].update();
 			this.data[ this.ants[ i ].x ][ this.ants[ i ].y ] =  this.ants[ i ].hasFood ? E.ANT_WITH_FOOD : E.ANT;
+		}
+	}
+
+	_onDraw( e ) {
+		if( e.x < 0 || e.x > 199 || e.y < 0 || e.y > 149 ) {
+			return;
+		}
+
+		this.data[ e.x ][ e.y ] = e.type;
+
+		if( e.type === E.FOOD ) {
+			this.dataLayer[ e.x ][ e.y ] = { type: E.FOOD, strength: E.MAX_FOOD };
+		}
+
+		else if( e.type === E.OBSTACLE ) {
+			this.dataLayer[ e.x ][ e.y ] = { type: E.OBSTACLE, strength: 1 };
+		}
+
+		else if( e.type === E.EMPTY ) {
+			this.dataLayer[ e.x ][ e.y ] = E.EMPTY;
 		}
 	}
 

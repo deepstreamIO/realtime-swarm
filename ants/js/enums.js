@@ -7,5 +7,5 @@ module.exports = {
 	ANT_WITH_FOOD: 5,
 	MAX_FOOD: 50,
 	PHEROMONE: 6,
-	MAX_PHEROMONE: 150
+	MAX_PHEROMONE: 300
 }

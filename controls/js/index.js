@@ -1,6 +1,7 @@
 const $ = require( 'jquery' );
 const deepstream = require( 'deepstream.io-client-js' );
-
+const ds = deepstream( 'localhost:6020');
+const user = 'user/' + ds.getUid();
 $(function(){
 	function resize() {
 		var width = $(window).width();
@@ -9,7 +10,7 @@ $(function(){
 		var dpadSize = $( '.d-pad' ).width();
 		$( '.d-pad' ).height( dpadSize );
 		$( '.d-pad i' ).css( 'font-size', (dpadSize/3) + 'px' );
-		$( '.canvas-container' ).width( width * 0.8 ).height( width * 0.8 );
+		$( '.canvas-container' ).width( width * 0.8 ).height( width * 0.6 );
 	}
 
 	window.switchCtrl = function() {
@@ -19,7 +20,6 @@ $(function(){
 	resize();
 	$(window).resize( resize );
 
-	ds = deepstream( 'localhost:6020');
 
 	ds.on( 'connectionStateChanged', connectionState => {
 		$( '.connection-state' ).text( 'connection-state: ' + connectionState.toLowerCase() );
@@ -34,7 +34,6 @@ $(function(){
 	}
 
 	ds.login( null, success => {
-		var user = 'user/' + ds.getUid();
 		var rec = ds.record.getRecord( user );
 
 		rec.set({
@@ -54,5 +53,52 @@ $(function(){
 		bindKey( rec, '.d-pad .right', 'right' );
 		bindKey( rec, '.highlight-position', 'highlight' );
 	});
+
+
+	//type select
+	var drawType = $( '.select-type li.selected' ).data( 'type' );
+	$( '.select-type li' ).on( 'click touchstart', ( e ) => {
+		e.preventDefault();
+		$( '.select-type li.selected' ).removeClass( 'selected' );
+		$( e.target ).addClass( 'selected' );
+		drawType = $( e.target ).data( 'type' );
+	});
+
+	//drawing canvas
+	var touching = false;
+	var canvasContainer = $('.canvas-container');
+	var canvasWidth = null;
+	var canvasHeight = null;
+	var canvasLeft = null;
+	var canvasTop = null;
+
+	$('.canvas-container').on( 'mousedown touchstart', ( e ) => {
+		e.preventDefault();
+		canvasWidth = canvasContainer.width();
+		canvasHeight = canvasContainer.height();
+		canvasLeft = canvasContainer.offset().left;
+		canvasTop = canvasContainer.offset().top;
+		touching = true;
+	}).on( 'mouseup touchend', ( e ) => {
+		e.preventDefault();
+		touching = false;
+	}).on( 'mousemove touchmove', ( e ) => {
+		e.preventDefault();
+		var x,y;
+
+		if( touching ) {
+			if( e.touches && e.touches[ 0 ] ) {
+				x = Math.floor( 200 * ( ( e.touches[ 0 ].clientX - canvasLeft) / canvasWidth) );
+				y = Math.floor( 150 * ( ( e.touches[ 0 ].clientY - canvasTop) / canvasHeight) );
+			}
+			
+			ds.event.emit( 'ant-draw', {
+				x: x,
+				y: y,
+				user: user,
+				type: drawType
+			});
+		}
+	})
 
 });

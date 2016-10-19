@@ -1,8 +1,6 @@
-const deepstream = require( 'deepstream.io-client-js' );
-const ds = deepstream( 'localhost:6020' ).login();
-
 module.exports = class LeaderBoids{
-	constructor( width, height ) {
+	constructor( ds, width, height ) {
+		this._ds = ds;
 		this._width = width;
 		this._height = height;
 		this._users = {};
@@ -40,7 +38,7 @@ module.exports = class LeaderBoids{
 	_onUser( user, isSubscribed, response ) {
 		if( isSubscribed ) {
 			response.accept();
-			var record = ds.record.getRecord( user );
+			var record = this._ds.record.getRecord( user );
 			var color = this._getColor();
 			this._users[ user ] = {
 				record: record,

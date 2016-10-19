@@ -25,6 +25,11 @@ body{
 .swarm-b{
 	display: block;
 }
+
+canvas{
+	margin: 0 auto;
+    display: block;
+}
 .slide{
 	width: 1400px;
 }

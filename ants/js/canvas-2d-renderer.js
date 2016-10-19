@@ -2,10 +2,10 @@ const E = require( './enums' );
 const MAX_FOOD = 5;
 const COLORS = [];
 COLORS[ E.EMPTY ] = '#CCCCCC';
-COLORS[ E.ANT ] = '#000000';
-COLORS[ E.FOOD ] = '#FF00FF';
-COLORS[ E.ANT_WITH_FOOD ] = '#FF00FF';
-COLORS[ E.OBSTACLE ] = '#00FF00';
+COLORS[ E.ANT ] = '#FFF';
+COLORS[ E.FOOD ] = '#bd2b96';
+COLORS[ E.ANT_WITH_FOOD ] = '#bd2b96';
+COLORS[ E.OBSTACLE ] = '#bbbbbb';
 COLORS[ E.ANT_HILL ] = '#FF3388';
 
 

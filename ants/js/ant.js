@@ -64,6 +64,8 @@ module.exports = class Ant{
 				if( !this.hasFood && this.world.data[ move.x ][ move.y ] === E.PHEROMONE ) {
 					allowedMoves.push( move );
 					allowedMoves.push( move );
+					allowedMoves.push( move );
+					allowedMoves.push( move );
 				}
 			}
 		}
