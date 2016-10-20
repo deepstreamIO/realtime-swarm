@@ -6,15 +6,11 @@ $(function(){
 	function resize() {
 		var width = $(window).width();
 		$( '.mask' ).width( width );
-		$( '.inner' ).width( width * 2 );
+		$( '.inner' ).width( width * 3 );
 		var dpadSize = $( '.d-pad' ).width();
 		$( '.d-pad' ).height( dpadSize );
 		$( '.d-pad i' ).css( 'font-size', (dpadSize/3) + 'px' );
 		$( '.canvas-container' ).width( width * 0.8 ).height( width * 0.6 );
-	}
-
-	window.switchCtrl = function() {
-		$( '.inner' ).css( 'left', -1 * $(window).width() );
 	}
 
 	resize();
@@ -24,6 +20,28 @@ $(function(){
 	ds.on( 'connectionStateChanged', connectionState => {
 		$( '.connection-state' ).text( 'connection-state: ' + connectionState.toLowerCase() );
 	});
+
+
+	ds.record.getRecord( 'control-state' ).whenReady( rec => {
+		rec.subscribe( 'current-swarm', swarm => {
+			var left;
+			if( swarm === 'none' ) {
+				left = 0;
+			}
+
+			if( swarm === 'ants' ) {
+				left = '-100%';
+			}
+
+			if( swarm === 'bees' ) {
+				left = '-200%';
+			}
+			$( '.inner' ).css( 'left', left );
+		}, true );
+	});
+
+	window.ds = ds;
+
 
 	function bindKey( rec, selector, path ) {
 		$( selector ).on( 'mousedown, touchstart', () => {

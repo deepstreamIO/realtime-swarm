@@ -8,6 +8,9 @@
 
 html, body{
 	background: #f2777a;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
 }
 
 .d-pad{
@@ -102,7 +105,7 @@ html, body{
 
 .swarm-control{
 	float: left;
-	width: 50%;
+	width: 33.33%;
 	height: 100%;
 	position: relative;
 }
@@ -136,4 +139,15 @@ html, body{
 .canvas-container{
 	margin: 40px auto;
 	background: #fff;
+}
+
+.start img, .start h2{
+	width: 80%;
+	margin: 10%;
+}
+
+.start h2{
+	margin: 10%;
+	font-size: 50px;
+	font-weight: bold;
 }

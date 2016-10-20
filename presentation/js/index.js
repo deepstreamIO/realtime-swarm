@@ -22,6 +22,7 @@ window.onload = function() {
 	var rootElement = document.getElementById( "impress" );
 	var currentSwarm = null;
 
+	var controlRec = ds.record.getRecord( 'control-state' );
 	rootElement.addEventListener( "impress:stepenter", function() {
 		var currentStep = document.querySelector( ".present" );
 		if( currentStep.dataset.swarm !== currentSwarm ) {
@@ -32,6 +33,7 @@ window.onload = function() {
 				document.querySelector( '.ants' ).style.display = 'none';
 				antSwarm.stop();
 				beeSwarm.start();
+				controlRec.set( 'current-swarm', 'bees' );
 			}
 
 
@@ -40,6 +42,8 @@ window.onload = function() {
 				document.querySelector( '.ants' ).style.display = 'block';
 				antSwarm.start();
 				beeSwarm.stop();
+
+				controlRec.set( 'current-swarm', 'ants' );
 			}
 
 			else if( !currentSwarm ) {
@@ -47,6 +51,8 @@ window.onload = function() {
 				document.querySelector( '.ants' ).style.display = 'none';
 				antSwarm.stop();
 				beeSwarm.stop();
+
+				controlRec.set( 'current-swarm', 'none' );
 			}
 		}
 	});
