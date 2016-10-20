@@ -6,24 +6,19 @@
 	<link rel="stylesheet" type="text/css" href="css/screen.css" />
 </head>
 <body>
-<div class="swarm swarm-a">
+<div class="swarm swarm-a ants">
 
 </div>
-<div class="swarm swarm-b">
+<div class="swarm swarm-b bees">
 </div>
 <div id="impress">
 
-	<div class="step slide title" data-y="0">
+	<div class="step slide title" data-y="0" data-swarm="bees">
 		<img src="img/elton-title.svg"/>
 		<div class="details">
 			<h2 class="left">a faster swarm</h2>
 			<h3>@wolframhempel | deepstream.io</h3>
 		</div>
-	</div>
-
-	<div class="step slide" data-y="2000">
-		<!--Empty Slide to leave space for swarm experiment-->
-		<!--<img src="img/swarm.png" />-->
 	</div>
 
 	<div class="step slide two-col" data-y="4000">
@@ -50,23 +45,19 @@
 		<img src="img/ant.png" />
 	</div>
 
-	<div class="step slide" data-y="8000" id="swarm-a">
+	<div class="step slide" data-y="8000" id="swarm-a" data-swarm="ants">
 		<!--Empty Slide to leave space for swarm experiment-->
 	</div>
 
-	<div class="step slide center" data-y="10000">
+	<div class="step slide center" data-y="10000" data-swarm="ants">
 		<h2>Paris, Rome, London</h2>
 	</div>
 
-	<div class="step slide center" data-y="12000">
+	<div class="step slide center" data-y="12000" data-swarm="ants">
 		<h2>Paris, Rome, London, Berlin</h2>
 	</div>
 
-	<div class="step slide center" data-y="14000">
-		<h2>Travelling Salesman Problem</h2>
-	</div>
-
-	<div class="step slide center num-list" data-y="16000">
+	<div class="step slide center num-list" data-y="16000" data-swarm="ants">
 		<div class="wrapper">
 			<div><span>3</span>6</div>
 			<div><span>4</span>24</div>
@@ -80,6 +71,11 @@
 			<div><span>12</span>479001600</div>
 		</div>
 	</div>
+
+	<div class="step slide center" data-y="14000" data-swarm="ants">
+		<h2>Travelling Salesman Problem</h2>
+	</div>
+
 
 	<div class="step slide center" data-y="18000">
 		<img src="img/travelling-salesman-unsolved.png" width="750" />
@@ -104,16 +100,22 @@
 		<h2>Class B</h2>
 	</div>
 
-	<div class="step slide center" data-y="24000">
+	<div class="step slide center" data-y="24000" data-swarm="bees">
+		<h2>Bees</h2>
+		<br /><br />
+		<img src="img/bees.png" />
+	</div>
+
+	<div class="step slide center" data-y="24000" data-swarm="bees">
 		<!--Empty Slide to leave space for swarm experiment-->
 	</div>
 
-	<div class="step slide center" data-y="26000">
+	<div class="step slide center" data-y="26000" data-swarm="bees">
 		<h2>Boids (bird-oid objects)</h2>
 		<h3>Craig Reynolds, 1986</h3>
 	</div>
 
-	<div class="step slide center boid-mechanic" data-y="28000">
+	<div class="step slide center boid-mechanic" data-y="28000" data-swarm="bees">
 		<div>
 			<img src="img/boid-1.png" />
 			<label>separation</label>
@@ -128,23 +130,16 @@
 		</div>
 	</div>
 
-	<div class="step slide center" data-y="24000">
-		<h2>Bees</h2>
-		<br /><br />
-		<img src="img/bees.png" />
-	</div>
-
-
-	<div class="step slide center" data-y="24000">
+	<div class="step slide center" data-y="24000" data-swarm="bees">
 		<img src="img/max-von-frisch.jpg" class="circle" />
 	</div>
 
-	<div class="step slide center" data-y="24000">
+	<div class="step slide center" data-y="24000" data-swarm="bees">
 		<img src="img/waggledance.png" />
 		<h2>Waggle Dance</h2>
 	</div>
 
-	<div class="step slide center" data-y="24000">
+	<div class="step slide center" data-y="24000" data-swarm="bees">
 		<!--Empty Slide to leave space for swarm experiment-->
 	</div>
 </div>

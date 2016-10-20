@@ -20,11 +20,34 @@ window.onload = function() {
 //	
 //	
 	var rootElement = document.getElementById( "impress" );
+	var currentSwarm = null;
+
 	rootElement.addEventListener( "impress:stepenter", function() {
 		var currentStep = document.querySelector( ".present" );
-		if( currentStep.id === 'swarm-a' ) {
-			document.querySelector( '.swarm-a' ).style.display = 'block';
-			antSwarm.start();
+		if( currentStep.dataset.swarm !== currentSwarm ) {
+			currentSwarm = currentStep.dataset.swarm;
+
+			if( currentSwarm === 'bees' ) {
+				document.querySelector( '.bees' ).style.display = 'block';
+				document.querySelector( '.ants' ).style.display = 'none';
+				antSwarm.stop();
+				beeSwarm.start();
+			}
+
+
+			else if( currentSwarm === 'ants' ) {
+				document.querySelector( '.bees' ).style.display = 'none';
+				document.querySelector( '.ants' ).style.display = 'block';
+				antSwarm.start();
+				beeSwarm.stop();
+			}
+
+			else if( !currentSwarm ) {
+				document.querySelector( '.bees' ).style.display = 'none';
+				document.querySelector( '.ants' ).style.display = 'none';
+				antSwarm.stop();
+				beeSwarm.stop();
+			}
 		}
 	});
 }
