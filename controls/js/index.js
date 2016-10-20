@@ -1,6 +1,6 @@
 const $ = require( 'jquery' );
 const deepstream = require( 'deepstream.io-client-js' );
-const ds = deepstream( 'localhost:6020');
+const ds = deepstream( '54.93.37.250:6020');
 const user = 'user/' + ds.getUid();
 $(function(){
 	function resize() {

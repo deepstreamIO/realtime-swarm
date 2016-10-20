@@ -1,7 +1,7 @@
 const BeeSwarm = require( '../../bees/js/' );
 const AntSwarm = require( '../../ants/js/ant-swarm' );
 const deepstream = require( 'deepstream.io-client-js' );
-const ds = deepstream( 'localhost:6020' ).login();
+const ds = deepstream( '54.93.37.250:6020' ).login();
 
 window.onload = function() {
 	var slides = document.querySelectorAll( '.slide' );
