@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/deepstreamIO/ds-demo-spaceshooter#readme",
   "dependencies": {
-    "deepstream.io-client-js": "^1.0.0"
+    "deepstream.io-client-js": "^2.3.0"
   }
 }
