@@ -1,0 +1,12 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "ants/package.json",
+        "bees/package.json",
+        "controls/package.json",
+        "presentation/package.json"
+      ]
+    }
+  }
+}
